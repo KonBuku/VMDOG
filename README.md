@@ -58,10 +58,12 @@ These steps will guide you through the setup of a Windows 10 virtual machine in 
    Power on the VM and enter BIOS setup. Make sure it boots from the disk first. If you’re installing Windows from an ISO, set the ISO as a CD/DVD device (SCSI if needed) and ensure it’s recognized.  
    If the ISO is not detected, try changing the CD/DVD to a different SCSI slot in the **Advanced** tab of the VM’s CD/DVD settings.
 
-10. **After Windows Installation**  
+   ![VMBoot](Images/VMBoot.png)
+
+11. **After Windows Installation**  
    Once Windows is installed, remove the CD/DVD drive entirely from the VM settings. Do **not** install VMware Tools.
 
-11. **Disable Windows Defender**  
+12. **Disable Windows Defender**  
    Use `dcontrol` (optional but recommended) to disable Windows Defender completely.
 
 ### Hardening with VmwareHardenedLoader
