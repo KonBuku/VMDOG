@@ -1,5 +1,9 @@
 # VMDOG  
-*Disguise your VMware environment and bypass advanced detection methods, including all VMProtect versions and the latest SafeExam Browser checks.*
+*Bypass VM-Detections including all VMProtect versions and the latest SafeExam Browser checks.*
+
+---
+
+![VMDOG](Images/VMDOG.png)
 
 ---
 
@@ -7,7 +11,7 @@
 
 VMDOG is a specialized toolkit aimed at helping you create a more stealthy VMware environment. By following these instructions, you can spoof hardware and firmware details, preventing VMware detection and allowing you to run sensitive applications that typically refuse to operate in virtualized environments.
 
-These steps will guide you through the setup of a Windows 10 virtual machine in VMware Workstation (or a similar product), including configuration tweaks, firmware replacements from this repository, and adjustments to ensure maximum stealth.
+These steps will guide you through the setup of a Windows 10 virtual machine in VMware Workstation (or a similar product), including configuration tweaks, firmware replacements from this repository.
 
 ---
 
@@ -36,25 +40,28 @@ These steps will guide you through the setup of a Windows 10 virtual machine in 
    Before finishing the VM creation wizard, uncheck **Power on this virtual machine after creation**.  
    Once done, click **Finish**.
 
-4. **Adjusting Virtual Disks**  
+   ![New Virtual Machine Wizard](Images/New%20Virtual%20Machine%20Wizard.png)
+
+5. **Adjusting Virtual Disks**  
    Go to **Edit virtual machine settings**:
    - Copy the Hard Disk `Disk File` path.  
    - Remove the existing Hard Disk and re-add it as a **SCSI** disk, using the previously copied path as an existing virtual disk.
 
-5. **Switch Firmware from EFI to BIOS**  
+6. **Switch Firmware from EFI to BIOS**  
    Open the `.vmx` file located in `C:\Users\admin\Documents\Virtual Machines\NameVM\NameVM.vmx` and change `firmware = "efi"` to `firmware = "bios"`.
 
-6. **Replace Firmware Files**  
+7. **Replace Firmware Files**  
    Replace your VM’s current firmware files with those found in the `firmware` folder provided in this repository.
+   Firmware-Folder VMware: `C:\Program Files (x86)\VMware\VMware Workstation\x64`
 
-7. **Boot Order and ISO Configuration**  
+9. **Boot Order and ISO Configuration**  
    Power on the VM and enter BIOS setup. Make sure it boots from the disk first. If you’re installing Windows from an ISO, set the ISO as a CD/DVD device (SCSI if needed) and ensure it’s recognized.  
    If the ISO is not detected, try changing the CD/DVD to a different SCSI slot in the **Advanced** tab of the VM’s CD/DVD settings.
 
-8. **After Windows Installation**  
+10. **After Windows Installation**  
    Once Windows is installed, remove the CD/DVD drive entirely from the VM settings. Do **not** install VMware Tools.
 
-9. **Disable Windows Defender**  
+11. **Disable Windows Defender**  
    Use `dcontrol` (optional but recommended) to disable Windows Defender completely.
 
 ### Hardening with VmwareHardenedLoader
@@ -100,6 +107,14 @@ These steps will guide you through the setup of a Windows 10 virtual machine in 
 ## Completion
 
 Once these steps are complete, you’ll have a VM configured to better evade VMware detection, suitable for use against even the latest versions of VMProtect and SafeExam Browser.
+
+---
+
+## TODO
+
+Simulating a Graphics Card and Registering a Virtual Monitor to Bypass Monitor Detection in SafeExamBrowser
+
+---
 
 **Credits:**  
 - [VmwareHardenedLoader](https://github.com/hzqst/VmwareHardenedLoader) by hzqst - A powerful tool for hardening VMware virtual machines against detection
